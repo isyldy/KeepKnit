@@ -1,0 +1,708 @@
+/* 
+  FONT FAMILY HERE
+  원하는 폰트 이름으로 바꿔주세요.
+  예시:
+  --main-font: 'Pretendard', sans-serif;
+  --logo-font: '원하는 로고 폰트', serif;
+*/
+@import url('https://fonts.googleapis.com/css2?family=Agbalumo&family=Noto+Sans+KR:wght@300&family=Playwrite+GB+J+Guides:ital@0;1&family=Zalando+Sans+Expanded:ital,wght@0,200..900;1,200..900&display=swap');
+
+.noto-sans-kr {
+  font-family: "Noto Sans KR", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+}
+
+
+:root {
+  --main-font: Georgia, "Times New Roman", serif;
+  --logo-font: Georgia, "Times New Roman", serif;
+  --mint: #b8dfe2;
+  --soft-mint: #eaf6f5;
+  --text: #252525;
+  --muted: #777;
+  --line: #d9d9d9;
+  --modal-bg: #f8f7f3;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--main-font);
+  color: var(--text);
+  background-image: url('../assets/bgimg-01.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  cursor: none;
+}
+
+
+.cursor-yarn {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 999;
+  width: 26px;
+  height: 26px;
+  border: 2px solid #bfeaff;
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 14px rgba(191, 234, 255, 0.55);
+}
+
+button {
+  font: inherit;
+}
+
+.hero {
+  position: relative;
+  min-height: 760px;
+  overflow: hidden;
+  background: transparent;
+}
+
+.hero-inner {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 60px 24px 160px;
+  min-height: 760px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-logo {
+  position: relative;
+  color: var(--mint);
+  display: grid;
+  place-items: center;
+}
+
+.hero-logo img {
+  position: relative;
+  z-index: 2;
+  width: clamp(280px, 40vw, 600px);
+  height: auto;
+  display: block;
+}
+
+.yarn-animation {
+  position: absolute;
+  z-index: 1;
+  width: clamp(330px, 48vw, 710px);
+  aspect-ratio: 1;
+  pointer-events: none;
+  opacity: 0.9;
+}
+
+.yarn-strand {
+  position: absolute;
+  left: -4%;
+  right: -4%;
+  height: clamp(6px, 0.8vw, 10px);
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.2) 8%,
+    #ffffff 20%,
+    #dff6ff 42%,
+    #bffff8 66%,
+    #ffffff 88%,
+    transparent 100%
+  );
+  box-shadow:
+    0 0 18px rgba(191, 234, 255, 0.26),
+    0 0 0 1px rgba(255, 255, 255, 0.58) inset;
+  transform-origin: center;
+  animation: yarnStrandWave 4.8s ease-in-out infinite;
+}
+
+.strand-1 {
+  top: 38%;
+  transform: rotate(-13deg);
+}
+
+.strand-2 {
+  top: 50%;
+  transform: rotate(8deg);
+  animation-delay: -1.2s;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.24) 10%,
+    #f8fdff 28%,
+    #d4f2ff 52%,
+    #b7fbf8 73%,
+    #ffffff 90%,
+    transparent 100%
+  );
+}
+
+.strand-3 {
+  top: 62%;
+  transform: rotate(-5deg);
+  animation-delay: -2.3s;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.18) 12%,
+    #ffffff 31%,
+    #e7f8ff 55%,
+    #c6fcff 76%,
+    #ffffff 91%,
+    transparent 100%
+  );
+}
+
+@keyframes yarnStrandWave {
+  0%,
+  100% {
+    translate: -18px 0;
+    scale: 0.92 1;
+  }
+
+  50% {
+    translate: 32px -16px;
+    scale: 1.04 1;
+  }
+}
+
+@media (max-width: 720px) {
+  .yarn-animation {
+    width: 88vw;
+    opacity: 0.82;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .yarn-strand {
+    animation: none;
+  }
+}
+
+.hero-text {
+  align-self: flex-end;
+  text-align: right;
+  margin-top: auto;
+  padding-top: 40px;
+}
+
+.hero-text p {
+  margin: 0 0 8px;
+  font-size: clamp(28px, 4vw, 52px);
+  letter-spacing: 0;
+  color: rgb(144, 119, 23);
+}
+
+.hero-text span {
+  margin: 0 0 8px;
+  font-size: clamp(16px, 2.2vw, 32px);
+  letter-spacing: 0;
+  color: rgb(148, 142, 119);
+}
+
+
+
+.fade-float {
+  opacity: 0;
+  transform: translateY(26px);
+  animation: fadeFloat 1.4s ease forwards;
+}
+
+.delay-1 {
+  animation-delay: 0.35s;
+}
+
+@keyframes fadeFloat {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fixed-buttons {
+  position: fixed;
+  bottom: 40px;
+  z-index: 20;
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  /* right는 JS로 계산 */
+}
+
+.icon-button {
+  border: 0;
+  outline: none;
+  padding: 0;
+  background: transparent;
+  color: var(--mint);
+  display: grid;
+  place-items: center;
+  text-decoration: none;
+  transition: transform 0.25s ease, background 0.25s ease;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.icon-button img {
+    width: 40px;
+    height: 40px;
+}
+
+.icon-button:hover {
+  transform: translateY(-3px);
+  background: transparent;
+}
+
+.icon-button:focus,
+.icon-button:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
+
+.archive {
+  box-sizing: border-box;
+  font-family: "Noto Sans KR", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+  position: relative;
+  min-height: 1850px;
+  max-width: 860px;
+  margin: 0 auto;
+  padding-top: 160px;
+  padding-bottom: 160px;
+  background: transparent;
+}
+
+
+.knit-item {
+  position: absolute;
+  width: 170px;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  text-align: center;
+  color: var(--text);
+  transition: transform 0.35s ease, filter 0.35s ease;
+}
+
+.knit-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 10px 14px rgba(0, 0, 0, 0.08));
+  transition: transform 0.35s ease, filter 0.35s ease;
+}
+
+/* 이미지가 아직 없을 때 레이아웃 확인용 */
+.knit-item img[src^="images/"] {
+  min-height: 120px;
+  background: #f5f5f2;
+  border: 1px dashed #ddd;
+  border-radius: 50%;
+}
+
+.knit-item span {
+  display: block;
+  margin-top: 10px;
+  font-size: 11px;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.knit-item:hover {
+  transform: translateY(-12px) rotate(-2deg) scale(1.04);
+}
+
+.knit-item:hover img {
+  filter: drop-shadow(0 18px 22px rgba(0, 0, 0, 0.14));
+}
+
+.knit-item:hover span {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 기획안처럼 아이템이 넓게 흩어진 위치 */
+.item-1 {
+  top: 40px;
+  right: 120px;
+  width: 140px;
+}
+
+.item-2 {
+  top: 180px;
+  left: 105px;
+  width: 160px;
+}
+
+.item-3 {
+  top: 420px;
+  left: 280px;
+  width: 170px;
+}
+
+.item-4 {
+  top: 610px;
+  right: 40px;
+  width: 130px;
+}
+
+.item-5 {
+  top: 720px;
+  left: 75px;
+  width: 155px;
+}
+
+.item-6 {
+  top: 940px;
+  left: 300px;
+  width: 180px;
+}
+
+.item-7 {
+  top: 1250px;
+  left: 100px;
+  width: 180px;
+}
+
+.item-8 {
+  top: 1410px;
+  right: 90px;
+  width: 165px;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(45px) scale(0.96);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  transition: opacity 0.9s ease, transform 0.9s ease;
+}
+
+.footer {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 40px 32px 70px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  font-size: 12px;
+  text-transform: lowercase;
+}
+
+.footer-logo {
+  color: var(--mint);
+  font-family: var(--logo-font);
+  font-size: 24px;
+  line-height: 0.9;
+  text-align: center;
+}
+
+.modal,
+.list-view {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: none;
+}
+
+.modal.is-open,
+.list-view.is-open {
+  display: block;
+}
+
+.modal-dim,
+.list-view::before {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background: rgba(38, 38, 35, 0.45);
+  backdrop-filter: blur(2px);
+}
+
+.modal-card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: min(420px, calc(100vw - 40px));
+  transform: translate(-50%, -44%);
+  padding: 34px 32px 28px;
+  border-radius: 22px;
+  background: #fff;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.18);
+  opacity: 0;
+}
+
+.modal.is-open .modal-card {
+  animation: modalIn 0.45s ease forwards;
+}
+
+@keyframes modalIn {
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.close-button {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 28px;
+  height: 28px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: #fff;
+  color: #aaa;
+}
+
+.close-button:hover {
+  background: #35c8aa;
+  color: #fff;
+  border-color: #35c8aa;
+}
+
+.modal-card h2 {
+  font-family: "Noto Sans KR", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  margin: 0 0 8px;
+  font-size: 22px;
+}
+
+.modal-meta {
+    font-family: "Noto Sans KR", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+  margin: 0 0 22px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.pattern-box {
+    font-family: "Noto Sans KR", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  padding: 20px;
+  border-radius: 10px;
+  background: var(--modal-bg);
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.counter {
+  margin-top: 22px;
+  border-top: 1px solid #eee;
+  padding-top: 18px;
+}
+
+.counter > span {
+    font-family: "Noto Sans KR", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+  display: block;
+  margin-bottom: 10px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.counter-control {
+    font-family: "Noto Sans KR", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+  display: grid;
+  grid-template-columns: 42px 1fr 42px;
+  gap: 10px;
+  align-items: center;
+}
+
+.counter-control button {
+  height: 38px;
+  border: 0;
+  border-radius: 50%;
+  background: #f5f5f5;
+  cursor: none;
+  transition: background 0.18s ease, color 0.18s ease, transform 0.18s ease;
+}
+
+.counter-control button.is-clicked {
+  background: var(--mint);
+  color: #fff;
+  transform: scale(0.92);
+}
+
+.counter-control strong {
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border-radius: 9px;
+  background: #f7f6f2;
+  font-size: 14px;
+  overflow: hidden;
+}
+
+.count-box {
+  overflow: hidden;
+}
+
+#rowCount {
+  display: inline-block;
+}
+
+#rowCount.count-up {
+  animation: countSlideUp 0.28s ease;
+}
+
+@keyframes countSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.reset-button {
+    font-family: "Noto Sans KR", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  display: block;
+  margin: 12px auto 0;
+  border: 0;
+  background: transparent;
+  color: #aaa;
+  font-size: 12px;
+  cursor: none;
+}
+
+.list-panel {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: min(620px, calc(100vw - 36px));
+  padding: 46px 34px 34px;
+  background: #fff;
+  border: 1px solid var(--line);
+  transform: translate(-50%, -50%);
+}
+
+.list-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 26px 22px;
+}
+
+.list-grid span {
+  font-family: "Noto Sans KR", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.list-card {
+  border: 0;
+  background: transparent;
+  text-align: center;
+}
+
+.list-card img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.list-card:hover img {
+  transform: translateY(-6px) scale(1.05);
+}
+
+.list-card span {
+  display: block;
+  margin-top: 8px;
+  font-size: 11px;
+}
+
+@media (max-width: 720px) {
+  .hero {
+    min-height: 320px;
+    padding-top: 58px;
+  }
+
+  .hero-logo {
+    left: 8vw;
+    top: 64px;
+  }
+
+  .hero-text {
+    right: 8vw;
+    top: 190px;
+  }
+
+  .fixed-buttons {
+    bottom: 24px;
+    gap: 10px;
+  }
+  .archive {
+    min-height: 1600px;
+    max-width: 100%;
+  }
+
+  .knit-item {
+    width: 130px;
+  }
+
+  .item-1 { top: 20px; right: 55px; }
+  .item-2 { top: 170px; left: 34px; }
+  .item-3 { top: 360px; right: 44px; left: auto; }
+  .item-4 { top: 540px; right: 22px; }
+  .item-5 { top: 680px; left: 36px; }
+  .item-6 { top: 880px; left: 50%; transform: translateX(-50%); }
+  .item-7 { top: 1130px; left: 36px; }
+  .item-8 { top: 1300px; right: 36px; }
+
+  .footer {
+    padding-inline: 24px;
+  }
+
+  .list-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+body,
+button,
+a,
+.knit-item,
+.icon-button,
+.list-card,
+.close-button,
+.reset-button {
+  cursor: none;
+}
